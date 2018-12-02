@@ -29,7 +29,7 @@
     {{- if .NextInSection -}}
     <div class='next-entry sep-before'>
       <a href='{{ .NextInSection.Permalink | relURL }}'>
-        <span class='screen-reader-text'>{{ i18n "nextPost" }}: </span>
+        <h2 class='screen-reader-text'>{{ i18n "nextPost" }}: </h2>
         {{- .NextInSection.Title -}}
         <span aria-hidden='true'>
           {{- print ( i18n "next" ) " " -}}
