@@ -1,6 +1,6 @@
 [about]
-title = "Tomasz Tunguz"
-description = "Venture Capitalist at Redpoint"
+title = ""
+description = ""
 logo = "/images/logo.png"
 
 [breadcrumbs]
@@ -8,8 +8,8 @@ separator = "/"
 excludeParents = ["page"]
 
 [recent_posts]
-title = "Recent Posts"
-length = 10
+title = ""
+length = 5
 excludeTypes = ["page"]
 
 [search]
@@ -21,9 +21,9 @@ mirror = ""
 
 [social_menu]
 title = ""
-platforms = ["twitter","email","linkedin"]
+platforms = ["github","facebook","twitter","instagram","email","codepen","gitlab","linkedin","telegram","google_scholar","youtube"]
 
 [taxonomy_cloud]
 title = ""
-taxonomy = "categories"
+taxonomy = "tags"
 shuffle = true

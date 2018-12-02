@@ -1,5 +1,6 @@
 {{- $sidebarEnabled := .Site.Params.sidebar.enable -}}
 {{- $sidebarWidgets := .Site.Params.widgets.sidebar -}}
+{{- $footerWidgets := .Site.Params.widgets.footer -}}
 
 {{- if ( and $sidebarEnabled $sidebarWidgets ) -}}
 
@@ -8,6 +9,7 @@
 
   <div class='container'>
   {{- partial "extras/widget_area" ( dict "Widgets" $sidebarWidgets "Scope" . ) -}}
+  {{- partial "extras/widget_area" ( dict "Widgets" $footerWidgets "Scope" . ) -}}
   </div>
 
   <div class='sidebar-overlay'></div>

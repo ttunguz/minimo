@@ -11,16 +11,16 @@
 
     <div class='main'>
 
-      {{- partial "nav/menus/main" . -}}
+      <!--{{- partial "nav/menus/main" . -}}-->
 
-      {{- $headerWidgets := .Site.Params.widgets.header -}}
+      <!--{{- $headerWidgets := .Site.Params.widgets.header -}}
       <div class='header-widgets'>
         <div class='container'>
           {{- partial "extras/widget_area" ( dict "Widgets" $headerWidgets "Scope" . ) -}}
         </div>
-      </div>
+      </div>-->
 
-      <header id='header' class='header site-header'>
+      <!--<header id='header' class='header site-header'>
         <div class='container sep-after'>
           <div class='header-info'>
             {{- if eq .Kind "home" -}}
@@ -31,6 +31,6 @@
             <p class='desc site-desc'>{{ .Site.Params.info.description }}</p>
           </div>
         </div>
-      </header>
+      </header>-->
 
       <main id='content'>
