@@ -1,0 +1,62 @@
+{{ define "main" }}
+<div id="search-box"><!-- SearchBox widget will appear here --></div>
+
+<div id="hits" class="my-4">
+    <!-- Hits widget will appear here -->
+</div>
+
+<div id="pagination">
+    <!-- Pagination widget will appear here -->
+</div>
+{{ end }}
+
+{{ define "addstyles" }}
+<link rel="stylesheet" type="text/css"
+      href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css"
+      href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch-theme-algolia.min.css">
+<style>
+    mark {
+        padding: 0;
+    }
+</style>
+{{ end }}
+
+{{ define "addscripts" }}
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4"></script>
+<script>
+  const search = instantsearch({
+    appId: "8CMON9E2OR",
+    apiKey: "7a16253c06d15fddc6880a9f16cf6cce",
+    indexName: "tomtunguz",
+    routing: true
+  });
+
+  search.addWidget(
+    instantsearch.widgets.hits({
+      container: "#hits",
+      templates: {
+        empty: "No results",
+        item: "<div><h3>{{ safeHTML "{{{ _highlightResult.title.value }}}" }}</h3></div>"
+      }
+    })
+  );
+
+  search.addWidget(
+    instantsearch.widgets.searchBox({
+      container: "#search-box",
+      placeholder: "Search"
+    })
+  );
+
+  search.addWidget(
+    instantsearch.widgets.pagination({
+      container: "#pagination",
+      maxPages: 20
+      // default is to scroll to 'body', here we disable this behavior
+      // scrollTo: false
+    })
+  );
+  search.start();
+</script>
+{{ end }}
