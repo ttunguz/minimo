@@ -3,29 +3,28 @@
 {{ partial "header/header" . }}
 
 {{ if .Content }}
-    <div class='entry'>
-        {{ partial "entry/content" . }}
-    </div>
+<div class='entry'>
+    {{ partial "entry/content" . }}
+</div>
 {{ end }}
 
 <div class='container'>
     {{ partial "widgets/search" . }}
 
-    <ul id='search-results' class='list search-results' data-results-empty='{{ i18n "searchResultEmpty" }}'
-        data-searching='{{ i18n "searching" }}'>
+    <ul id='search-results' class='list search-results' data-results-empty='{{ i18n "searchResultEmpty" }}' data-searching='{{ i18n "searching" }}'>
     </ul>
 </div>
 
-<script>
-  window.algolia = {
-    appId: "8CMON9E2OR",
-    searchApiKey: "7a16253c06d15fddc6880a9f16cf6cce",
-    indexName: "tomtunguz"
-  };
-</script>
+{{- with .Site.Params.search.client -}}
+<script>window.algolia = {
+  appId: '{{ $.Site.Params.search.algolia.appId }}',
+  indexName: '{{ $.Site.Params.search.algolia.indexName }}',
+  searchApiKey: '{{ $.Site.Params.search.algolia.searchApiKey }}'
+}</script>
 
 {{- $scriptKey := ( print . "_search" ) -}}
 {{- $scriptName := ( index $.Site.Data.assets $scriptKey ).js -}}
 <script src='{{ print "assets/js/" $scriptName | relURL }}'></script>
+{{- end -}}
 
 {{ partial "footer" . }}

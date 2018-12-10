@@ -10,9 +10,7 @@ const { appId, indexName, searchApiKey } = window.algolia
 
 const client = algoliasearch(appId, searchApiKey)
 
-const index = client.initIndex(
-  `${indexName}${window.location.pathname.replace('/search/', '')}`
-)
+const index = client.initIndex(indexName);
 
 const doSearch = (term, resultsBlock) => {
   setSearchingIndicator(resultsBlock)
