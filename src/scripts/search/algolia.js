@@ -18,7 +18,7 @@ const doSearch = (term, resultsBlock) => {
     appendResults([], resultsBlock);
   } else {
     index.search(
-      { query: term, attributesToRetrieve: ["title", "href"], hitsPerPage: 20 },
+      { query: term, attributesToRetrieve: ["title", "permalink"], hitsPerPage: 20 },
       function searchDone(err, content) {
         if (err) console.error(err);
         else appendResults(content.hits, resultsBlock);
