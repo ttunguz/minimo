@@ -4,13 +4,13 @@
     "js": "main.dfd3a3a1.js"
   },
   "algolia_search": {
-    "js": "algolia_search.eb5550c9.js"
+    "js": "algolia_search.e238fee4.js"
   },
   "fuse_search": {
-    "js": "fuse_search.1556203e.js"
+    "js": "fuse_search.f0e95045.js"
   },
   "lunr_search": {
-    "js": "lunr_search.8c303a12.js"
+    "js": "lunr_search.45a49ff4.js"
   },
   "details-polyfill": {
     "js": "details-polyfill.eb7af4c0.js"

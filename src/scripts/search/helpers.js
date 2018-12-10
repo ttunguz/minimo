@@ -4,8 +4,8 @@ export const appendResults = (results, resultsBlock) => {
       <a href='#search-term'>${resultsBlock.dataset.resultsEmpty}</a>
     </li>`
   } else {
-    resultsBlock.innerHTML = results.reduce((prevItem, { permalink, title }) => {
-      return `${prevItem}<li><a href=`${permalink}`>${title}</a></li>`
+    resultsBlock.innerHTML = results.reduce((prevItem, { url, title }) => {
+      return `${prevItem}<li><a href='${url}'>${title}</a></li>`
     }, '')
   }
 }
