@@ -1,36 +1,26 @@
-{{ partial "header" . }}
+{{ define "main" }}
+<div id="search-box"><!-- SearchBox widget will appear here --></div>
 
-{{ partial "header/header" . }}
+<div id="hits" class="my-4">
+    <!-- Hits widget will appear here -->
+</div>
 
-{{ if .Content }}
-<div class='entry'>
-  {{ partial "entry/content" . }}
+<div id="pagination">
+    <!-- Pagination widget will appear here -->
 </div>
 {{ end }}
 
-<div class='container'>
-  {{ partial "widgets/search" . }}
+{{ define "addstyles" }}
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch-theme-algolia.min.css">
+<style>
+    mark {
+        padding: 0;
+    }
+</style>
+{{ end }}
 
-  <ul id='search-results' class='list search-results' data-results-empty='{{ i18n "searchResultEmpty" }}' data-searching='{{ i18n "searching" }}'>
-  </ul>
-</div>
-
-{{- with .Site.Params.search.client -}}
-  {{- if eq . "lunr" -}}
-  <script src='{{ ( print "search/lunr_idx.js?build=" ( now.Format "200601021504" ) ) | relLangURL }}'></script>
-  {{- else if eq . "algolia" -}}
-  <script>window.algolia = {
-    appId: '{{ $.Site.Params.search.algolia.appId }}',
-    indexName: '{{ $.Site.Params.search.algolia.indexName | default "minimo_site" }}',
-    searchApiKey: '{{ $.Site.Params.search.algolia.searchApiKey }}'
-  }</script>
-  {{- end -}}
-
-  {{- $scriptKey := ( print . "_search" ) -}}
-  {{- $scriptName := ( index $.Site.Data.assets $scriptKey ).js -}}
-  <script src='{{ print "assets/js/" $scriptName | relURL }}'></script>
-{{- end -}}
-
-this is a search 
-
-{{ partial "footer" . }}
+{{ define "addscripts" }}
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4"></script>
+<script src="js/search.js"></script>
+{{ end }}
