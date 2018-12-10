@@ -14,14 +14,12 @@ const index = client.initIndex(indexName);
 
 const doSearch = (term, resultsBlock) => {
   setSearchingIndicator(resultsBlock);
-
   if (!term) {
     appendResults([], resultsBlock);
   } else {
     index.search(
-      term,
-      { attributesToRetrieve: ["title", "href"], hitsPerPage: 10 },
-      (err, content) => {
+      { query: term, attributesToRetrieve: ["title", "href"], hitsPerPage: 20 },
+      function searchDone(err, content) {
         if (err) console.error(err);
         else appendResults(content.hits, resultsBlock);
       }
