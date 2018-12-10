@@ -1,0 +1,31 @@
+{{ partial "header" . }}
+
+{{ partial "header/header" . }}
+
+{{ if .Content }}
+    <div class='entry'>
+        {{ partial "entry/content" . }}
+    </div>
+{{ end }}
+
+<div class='container'>
+    {{ partial "widgets/search" . }}
+
+    <ul id='search-results' class='list search-results' data-results-empty='{{ i18n "searchResultEmpty" }}'
+        data-searching='{{ i18n "searching" }}'>
+    </ul>
+</div>
+
+<script>
+  window.algolia = {
+    appId: "8CMON9E2OR",
+    searchApiKey: "7a16253c06d15fddc6880a9f16cf6cce",
+    indexName: "tomtunguz"
+  };
+</script>
+
+{{- $scriptKey := ( print . "_search" ) -}}
+{{- $scriptName := ( index $.Site.Data.assets $scriptKey ).js -}}
+<script src='{{ print "assets/js/" $scriptName | relURL }}'></script>
+
+{{ partial "footer" . }}
