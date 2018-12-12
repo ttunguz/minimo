@@ -1,47 +1,43 @@
-import algoliasearch from 'algoliasearch/lite'
+import algoliasearch from "algoliasearch";
 
 import {
   appendResults,
   getUrlSearchParam,
   setSearchingIndicator
-} from './helpers'
+} from "./helpers";
 
-const { appId, indexName, searchApiKey } = window.algolia
+const { appId, indexName, searchApiKey } = window.algolia;
 
-const client = algoliasearch(appId, searchApiKey)
+const client = algoliasearch(appId, searchApiKey);
 
-const index = client.initIndex(
-  `${indexName}${window.location.pathname.replace('/search/', '')}`
-)
+const index = client.initIndex(indexName);
 
 const doSearch = (term, resultsBlock) => {
-  setSearchingIndicator(resultsBlock)
-
+  setSearchingIndicator(resultsBlock);
   if (!term) {
-    appendResults([], resultsBlock)
+    appendResults([], resultsBlock);
   } else {
     index.search(
-      term,
-      { attributesToRetrieve: ['title', 'href'], hitsPerPage: 10 },
-      (err, content) => {
-        if (err) console.error(err)
-        else appendResults(content.hits, resultsBlock)
+      { query: term, attributesToRetrieve: ["title", "url"], hitsPerPage: 20 },
+      function searchDone(err, content) {
+        if (err) console.error(err);
+        else appendResults(content.hits, resultsBlock);
       }
-    )
+    );
   }
-}
+};
 
-const searchForm = document.getElementById('search-form')
-const searchInputBox = document.getElementById('search-term')
-const resultsBlock = document.getElementById('search-results')
+const searchForm = document.getElementById("search-form");
+const searchInputBox = document.getElementById("search-term");
+const resultsBlock = document.getElementById("search-results");
 
-let term = getUrlSearchParam('q')
-searchInputBox.value = term
-searchInputBox.focus()
-doSearch(term, resultsBlock)
+let term = getUrlSearchParam("q");
+searchInputBox.value = term;
+searchInputBox.focus();
+doSearch(term, resultsBlock);
 
-searchForm.addEventListener('submit', e => {
-  e.preventDefault()
+searchForm.addEventListener("submit", e => {
+  e.preventDefault();
 
-  doSearch(searchInputBox.value, resultsBlock)
-})
+  doSearch(searchInputBox.value, resultsBlock);
+});
