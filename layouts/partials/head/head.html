@@ -15,6 +15,7 @@
     window.attachEvent("onload", downloadJSAtOnload);
     else window.onload = downloadJSAtOnload;
     </script>
+    
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch-theme-algolia.min.css">
   {{ if .RSSLink }}
     <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
