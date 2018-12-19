@@ -11,18 +11,4 @@
   {{- end -}}
 {{- end -}}
 
-{{- with .Params.cover -}}
-  {{- $type := ( printf "%T" . ) -}}
-  {{- $isMap := ( not ( eq $type "string" ) ) -}}
-  <meta property='twitter:image' content='
-  {{- if $isMap -}}
-    {{- .image | absURL -}}
-  {{- else -}}
-    {{- . | absURL -}}
-  {{- end -}}'>
-  {{- if $isMap -}}
-    {{- with .caption -}}
-    <meta property='twitter:image:alt' content='{{ . | markdownify }}'>
-    {{- end -}}
-  {{- end -}}
-{{- end -}}
+<meta property='twitter:image' content='{{- .image | absURL -}}'>
