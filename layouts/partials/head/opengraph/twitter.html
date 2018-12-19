@@ -11,4 +11,4 @@
   {{- end -}}
 {{- end -}}
 
-<meta property='twitter:image' content='{{ printf "%s%s" $.Param "cloudinary_base_url" $.Param "image"  }}'>
+<meta property='twitter:image' content='{{ printf "%s%s" .Site.Params.cloudinary_base_url .Page.Params.image  }}'>
