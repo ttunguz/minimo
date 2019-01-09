@@ -6,8 +6,10 @@
     <h3 class='item-title'>
       <a href='{{ .Permalink | relURL }}'>
         {{- .Title -}}
-        {{- .Params.excerpt -}}
       </a>
     </h3>
+    <span>
+      {{- .Params.excerpt -}}
+    </span>
   </header>
 </li>
