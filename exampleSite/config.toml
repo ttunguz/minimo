@@ -4,8 +4,9 @@ title = "Minimo"
 copyright = ""
 
 theme = "minimo"
+
 disqusShortname = ""
-googleAnalytics = "UA-3316877-1"
+googleAnalytics = ""
 
 Paginate = 5
 preserveTaxonomyNames = true
@@ -48,6 +49,7 @@ showLastmod = true
 taxonomyCloudShuffle = true
 accentColor = "#ffcd00"
 hideMainMenu = false
+rtl = false
 
 [params.sidebar]
 enable = true
@@ -96,11 +98,8 @@ dataAttrs = "" # "data-isso='https://isso.example.com' data-isso-require-author=
 enable = true
 apiEndpoint = "https://api.staticman.net/v2/entry"
 maxDepth = 2
-
-[params.comments.staticman.github]
 username = "MunifTanjim"
 repository = "minimo"
-branch = "master"
 
 # Utterances: https://utteranc.es
 [params.comments.utterances]
@@ -112,7 +111,7 @@ username = "MunifTanjim"
 repository = "minimo"
 
 [params.search]
-client = "" # algolia / fuse / lunr
+client = "fuse" # algolia / fuse / lunr
 
 [params.search.algolia]
 appId = ""

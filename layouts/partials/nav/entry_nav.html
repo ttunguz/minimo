@@ -21,7 +21,7 @@
           {{- print " " ( i18n "previous" ) -}}
         </span>
         <span class='screen-reader-text'>{{ i18n "previousPost" }}: </span>
-        <h2>{{- .PrevInSection.Title -}}</h2>
+        {{- .PrevInSection.Title -}}
       </a>
     </div>
     {{- end -}}
@@ -29,7 +29,7 @@
     {{- if .NextInSection -}}
     <div class='next-entry sep-before'>
       <a href='{{ .NextInSection.Permalink | relURL }}'>
-        <h2 class='screen-reader-text'>{{ i18n "nextPost" }}: </h2>
+        <span class='screen-reader-text'>{{ i18n "nextPost" }}: </span>
         {{- .NextInSection.Title -}}
         <span aria-hidden='true'>
           {{- print ( i18n "next" ) " " -}}

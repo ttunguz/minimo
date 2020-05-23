@@ -11,4 +11,23 @@
   {{- end -}}
 {{- end -}}
 
-<meta property='twitter:image' content='{{ printf "%s%s" $.Params.cloudinary.cloudinary_base_url .Page.Params.image  }}'>
+{{- with .Params.cover -}}
+  {{- $type := ( printf "%T" . ) -}}
+  {{- $isMap := ( not ( eq $type "string" ) ) -}}
+
+  {{- $image := "" -}}
+  {{- if $isMap -}}
+    {{- $image = .image -}}
+  {{- else -}}
+    {{- $image = . -}}
+  {{- end -}}
+
+  {{- $image = ( replaceRE "^\\./" $.RelPermalink $image ) -}}
+
+  <meta property='twitter:image' content='{{- $image | absURL -}}'>
+  {{- if $isMap -}}
+    {{- with .caption -}}
+    <meta property='twitter:image:alt' content='{{ . | markdownify }}'>
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

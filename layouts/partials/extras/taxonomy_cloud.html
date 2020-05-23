@@ -8,7 +8,7 @@
 <div class='container list-container'>
   <ul class='list taxonomy-cloud {{- if not $Shuffle }} no-shuffle {{- end -}}'>
   {{- if gt ( len $Data.Terms ) 0 -}}
-    {{- $maxSize := 2.0 -}}
+    {{- $maxSize := 1.0 -}}
     {{- $minSize := 1.0 -}}
     {{- $sizeSpread := ( sub $maxSize $minSize ) -}}
 
@@ -26,13 +26,11 @@
       {{- $sizeStep := ( $Scratch.Get "sizeStep" ) -}}
       {{- $size := ( add $minSize ( mul $sizeStep ( sub $count $minCount ) ) ) -}}
 
-      {{- with $Site.GetPage ( print "/" $Data.Plural "/" .Term ) -}}
       <li>
-        <a href='{{ .RelPermalink }}'>
-          {{- .Title | lower -}}
+        <a href='{{ .Page.RelPermalink }}' style='font-size:{{ $size }}em'>
+          {{- humanize .Page.Title -}}
         </a>
       </li>
-      {{- end -}}
     {{- end -}}
   {{- else -}}
     <span>

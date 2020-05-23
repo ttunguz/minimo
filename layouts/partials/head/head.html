@@ -2,36 +2,13 @@
   {{ partial "head/meta" . }}
   <title>{{ partial "data/title" . }}</title>
   <link rel='canonical' href='{{ .Permalink }}'>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch.min.css">
-  <script type="text/javascript">
-    function downloadJSAtOnload() {
-    var element = document.createElement("script");
-    element.src = "https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4";
-    document.body.appendChild(element);
-    }
-    if (window.addEventListener)
-    window.addEventListener("load", downloadJSAtOnload, false);
-    else if (window.attachEvent)
-    window.attachEvent("onload", downloadJSAtOnload);
-    else window.onload = downloadJSAtOnload;
-    </script>
-    
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.4/dist/instantsearch-theme-algolia.min.css">
-  {{ if .RSSLink }}
-    <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+  {{ with .OutputFormats.Get "RSS" }}
+    <link href="{{ .Permalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
   {{ end }}
   {{ partial "head/hreflang" . }}
   {{ partial "head/includes" . }}
   {{ partial "head/extra" . }}
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-3316877-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-3316877-1');
-</script>
-<link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro|Tenor+Sans" rel="stylesheet">
+  <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us7.list-manage.com","uuid":"a9a621a2899a14a9105e217ce","lid":"e35bc95471","uniqueMethods":true}) })</script>
 
 </head>

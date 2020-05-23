@@ -10,7 +10,7 @@ const client = algoliasearch(
 
 const indexName = process.env.ALGOLIA_INDEX_NAME || 'minimo_site'
 
-const publicDir = path.resolve(__dirname, '..', process.argv[2] || 'public')
+const publicDir = path.resolve(process.argv[2] || 'public')
 
 const objectsPaths = glob.sync('**/search/index.json', {
   cwd: publicDir,
@@ -23,6 +23,7 @@ const indicesInfo = objectsPaths.map(objectsPath => ({
     .slice(publicDir.length, -'/search/index.json'.length)
     .replace('/', '_')}`
 }))
+process.stdout.write(indicesInfo)
 
 indicesInfo.forEach(indexInfo => {
   let objects = require(indexInfo.path)
@@ -32,6 +33,7 @@ indicesInfo.forEach(indexInfo => {
   })
 
   let index = client.initIndex(indexInfo.name)
+
   index.addObjects(objects, (err, _content) => {
     if (err) console.error(err.toString())
     else
