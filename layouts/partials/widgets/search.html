@@ -4,11 +4,6 @@
 {{- $config := ( ( index $configData $lang ) | default $configData ) -}}
 
 <section class='widget widget-search sep-after'>
-  <header>
-    <h4 class='title widget-title'>
-      {{- $config.title | default ( i18n "search" ) -}}
-    </h4>
-  </header>
 
   <form action='{{ "search" | relLangURL }}' id='search-form' class='search-form'>
     <label>
