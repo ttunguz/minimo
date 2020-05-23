@@ -11,7 +11,7 @@ const { appId, indexName, searchApiKey } = window.algolia
 const client = algoliasearch(appId, searchApiKey)
 
 const index = client.initIndex(
-  `${indexName}${window.location.pathname.replace("\\/search\\/", '')}`
+  `${indexName}${window.location.pathname.replace("search", '')}`
 )
 
 const doSearch = (term, resultsBlock) => {
