@@ -23,7 +23,6 @@ const indicesInfo = objectsPaths.map(objectsPath => ({
     .slice(publicDir.length, -'/search/index.json'.length)
     .replace('/', '_')}`
 }))
-process.stdout.write(indicesInfo)
 
 indicesInfo.forEach(indexInfo => {
   let objects = require(indexInfo.path)
@@ -33,7 +32,6 @@ indicesInfo.forEach(indexInfo => {
   })
 
   let index = client.initIndex(indexInfo.name)
-
   index.addObjects(objects, (err, _content) => {
     if (err) console.error(err.toString())
     else
