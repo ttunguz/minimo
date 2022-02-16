@@ -2,7 +2,6 @@
 <html lang='{{ .Site.Language.Lang }}'>
 
 {{- partial "head/head" . -}}
-  <script async data-uid="321bb5042d" src="https://ttunguz.ck.page/321bb5042d/index.js"></script>
 
 <body class='{{ partial "header/bodyClasses" . }}'>
   <div class='site'>
@@ -10,6 +9,7 @@
     {{- partial "sidebar/sidebar" . -}}
 
     <div class='main'>
+        <script async data-uid="571c76af42" src="https://ttunguz.ck.page/571c76af42/index.js"></script>
       {{- partial "nav/menus/main" . -}}
 
       {{- $headerWidgets := .Site.Params.widgets.header -}}
@@ -18,5 +18,5 @@
           {{- partial "extras/widget_area" ( dict "Widgets" $headerWidgets "Scope" . ) -}}
         </div>
       </div>
-
+        <a data-formkit-toggle="571c76af42" href="https://ttunguz.ck.page/571c76af42">Your link text</a>
       <main id='content'>
